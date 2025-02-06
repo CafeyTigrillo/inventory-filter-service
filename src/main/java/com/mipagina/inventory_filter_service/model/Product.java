@@ -1,5 +1,6 @@
 package com.mipagina.inventory_filter_service.model;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -11,15 +12,26 @@ import lombok.Data;
 public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Schema(description = "Unique identifier of the product", example = "101")
     private Long idProduct;
 
+    @Schema(description = "Name of the product", example = "Wireless Headphones", required = true)
     private String name;
+
+    @Schema(description = "Detailed description of the product", example = "Noise-canceling over-ear headphones with Bluetooth 5.0", required = true)
     private String description;
+
+    @Schema(description = "Price of the product", example = "99.99", required = true)
     private Double price;
+
+    @Schema(description = "Unique identifier of the category to which the product belongs", example = "3", required = true)
     private Long idCategory;
+
+    @Schema(description = "Availability status of the product", example = "true", required = true)
     private Boolean availability;
 
-    public Long getIdProduct() {
+
+public Long getIdProduct() {
         return idProduct;
     }
 
